@@ -1,8 +1,9 @@
 # SimpleNioClientServer
 
 This is a simple single threaded Java NIO client and server from 2008.
+It is written in the style of ultra low latency trading systems of that era.
 
-# Is this real HFT code?
+# How realistic is this code?
 
 I worked for Island ECN/Inet ATS/Instinet from 2000-2008.
 This was the company featured in [Dark Pools](http://www.amazon.com/gp/product/0307887189?keywords=dark%20pools&qid=1448422629&ref_=sr_1_1&sr=8-1) and this code is
