@@ -1,0 +1,46 @@
+<project name="orcEcho" default="build"  basedir=".">
+	
+    <property name="src.dir" value="src"/>
+    <property name="build.dir" value="build"/>
+	
+    <property name="compile.dir" value="${build.dir}/classes"/>
+	
+	<property name="dest.dir" value="${build.dir}/${ant.project.name}"/>
+    <property name="lib.dir" value="${dest.dir}/lib"/>
+	
+    <path id="master-classpath">
+        <fileset dir="${lib.dir}">
+            <include name="*.jar"/>
+        </fileset>
+        <pathelement path="${compile.dir}"/>
+    </path>
+
+    <target name="init">
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${compile.dir}"/>
+        <mkdir dir="${lib.dir}"/>
+    	
+    </target>
+	
+	<target name="clean">
+		<delete dir="${build.dir}"/>
+	</target>
+
+	
+    <target name="build" depends="clean,init">
+
+        <javac destdir="${compile.dir}" target="1.5" debug="true"
+               deprecation="false" optimize="false" failonerror="true">
+            <src path="${src.dir}/"/>
+            <classpath refid="master-classpath"/>
+        </javac>
+
+        <copy todir="${compile.dir}" preservelastmodified="true">
+            <fileset dir="${src.dir}" excludes="**/*.java"/>
+        </copy>
+    	
+    	<jar jarfile="${lib.dir}/${ant.project.name}.jar" basedir="${compile.dir}" />
+    	
+    </target>
+
+</project>
